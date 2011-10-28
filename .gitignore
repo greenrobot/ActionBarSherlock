@@ -2,10 +2,10 @@
 bin
 gen
 
-#Eclipse
-.project
-.classpath
-.settings
+#Eclipse: don't ignore for this fork
+#.project
+#.classpath
+#.settings
 
 #IntelliJ IDEA
 .idea
