@@ -1,6 +1,100 @@
 Change Log
 ===============================================================================
 
+Version 4.0.0 *(2012-03-07)*
+----------------------------
+
+Complete rewrite of the library to backport the Android 4.0 action bar.
+
+ * The minimum supported version of Android is now 2.1 (API 7).
+ * New base activities are provided (e.g., `SherlockActivity` and
+   `SherlockFragmentActivity`) which extend from the native activities.
+ * The support library sources are no longer included in the library. You must
+   include `android-support-v4.jar` in your project separately.
+ * Theming now mirrors that of the native action bar through the use of multiple
+   styles rather than through `ab`- and `am`-prefixed attributes in the theme.
+ * The action bar can be statically attached to an activity view without the
+   requirement of using one of the provided base activities.
+
+
+Version 3.5.1 *(2012-01-03)*
+----------------------------
+
+ * Fix: `NullPointerException` in `FragmentManager` can no longer occur when an
+   attempt is being made to save to a `Bundle` that has not yet been created.
+ * Fix: Pre-3.0 action item submenu dialogs now properly dismiss themselves when
+   an item of theirs is selected.
+
+
+Version 3.5.0 *(2011-12-18)*
+----------------------------
+
+ *  Library now uses the `r6` version of the compatibility library for its base.
+    Ice Cream Sandwich-specific implementations are currently disabled, however,
+    but will be added in a future version of the library.
+    
+    `MenuCompat`, `MenuItemCompat`, and `ActivityCompat` have be added back in
+    to ease transition to this library but all their methods and the classes
+    themselves have been deprecated.
+ *  Rewritten menu and action item support from Ice Cream Sandwich.
+    
+    * Removed the need for the custom `Window.FEATURE_ACTION_ITEM_TEXT` flag.
+      You should now use the `showAsAction` attribute and/or the
+      `setShowAsAction(int)` method on each `MenuItem` to control whether or
+      not text is shown
+    * Action item dividers are now added automatically only when necessary
+      to distinguish possible confusion between action items.
+    * Fix: Action views now properly size themselves within the bounded space
+      of the menu.
+
+ *  Fix: List navigation no longer becomes unusable on certain device
+    configurations.
+ *  Fix: `SubMenu`'s `findItem(int)` method now properly returns the support
+    version of `MenuItem`.
+ *  Fix: Invisible sub-menu items are no longer shown on the pre-3.0 popup list.
+
+
+Version 3.4.2 *(2001-11-09)*
+----------------------------
+
+ * Fix: Stacked action bar now properly sets the tab bar background based on
+   the theme.
+
+
+Version 3.4.1 *(2011-11-09)*
+----------------------------
+
+ * The `makeFragmentName` method in `FragmentPagerAdapter` has been changed to
+   `public` scope to allow for easier access to your fragments that it is
+   managing.
+ * Action bar will now animate when calling `show()` or `hide()`.
+ * `SherlockPreferenceActivity` now provides full fragment and loader support.
+ * Examples for the plugins are now in their own sample application.
+ * Fix: Home icon no longer erroneously clipped when it exceeds the size of the
+   action bar.
+ * Fix: Tabs will now scroll horizontally to mimic the native action bar
+   behavior.
+ * Fix: Plugins now properly DO NOT inline their `R.java` integer constants.
+ * Fix: Tabs below the action bar are now styled with a default background so
+   that they do not incorrectly inherit an applied background unless explicity
+   declared.
+
+
+Version 3.4.0 *(2011-10-30)*
+----------------------------
+
+ * Library now uses the `r4` version of the compatibility library for its base.
+   Ice Cream Sandwich-specific implementations are currently disabled, however,
+   but will be added in a future version of the library.
+ * Context menu callbacks now use the support version of `MenuItem` to maintain
+   consistency.
+ * Added preference plugin which provides an action bar enhanced preference
+   screen.
+ * Fix: `abHomeLayout` theme attribute is now honored.
+ * Fix: `onPrepareOptionsMenu` is now properly dispatched upon menu
+   invalidation.
+
+
 Version 3.3.1 *(2011-10-20)*
 ----------------------------
 
