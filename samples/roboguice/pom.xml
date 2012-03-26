@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>com.actionbarsherlock</groupId>
 		<artifactId>parent-sample</artifactId>
-		<version>4.0.0</version>
+		<version>4.0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -34,16 +34,11 @@
 			<type>apklib</type>
 		</dependency>
 
+		<!-- https://github.com/rtyley/roboguice-sherlock -->
 		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-			<version>3.0</version>
-			<classifier>no_aop</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.roboguice</groupId>
-			<artifactId>roboguice</artifactId>
-			<version>2.0b4</version>
+			<groupId>com.github.rtyley</groupId>
+			<artifactId>roboguice-sherlock</artifactId>
+			<version>1.1</version>
 		</dependency>
 	</dependencies>
 
@@ -112,12 +107,22 @@
 						<version>${android-maven.version}</version>
 						<inherited>true</inherited>
 						<configuration>
+							<manifest>
+								<versionCodeAutoIncrement>true</versionCodeAutoIncrement>
+							</manifest>
 							<zipalign>
 								<inputApk>${project.build.directory}/${project.build.finalName}.apk</inputApk>
 								<outputApk>${project.build.directory}/${apk.prefix}-${project.artifactId}.apk</outputApk>
 							</zipalign>
 						</configuration>
 						<executions>
+							<execution>
+								<id>manifestUpdate</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>manifest-update</goal>
+								</goals>
+							</execution>
 							<execution>
 								<id>alignApk</id>
 								<phase>package</phase>
